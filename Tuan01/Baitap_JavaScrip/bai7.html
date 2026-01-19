@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var Mark = {mass: 78, hight: 1.69};
+        var John = {mass: 92, hight: 1.95};
+        function calcBMI(person){
+            return person.mass / (person.hight * person.hight);
+        }
+        var markBMI = calcBMI(Mark);
+        var johnBMI = calcBMI(John);
+        if(markBMI > johnBMI){
+            console.log(`Mark's BMI (${markBMI.toFixed(1)}) cao hơn John's (${johnBMI.toFixed(1)})!`);
+        } else {
+            console.log(`John's BMI (${johnBMI.toFixed(1)}) cao hơn Mark's (${markBMI.toFixed(1)})!`);
+        }
+    </script>
+</body>
+</html>
