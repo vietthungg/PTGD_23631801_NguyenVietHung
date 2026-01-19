@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gymnastics Competition</title>
+</head>
+<body>
+
+    <h2> Dolphins vs Koalas</h2>
+
+    <p>Chọn dữ liệu mẫu:</p>
+    <button class="btn-test" onclick="loadData(1)">Data 1</button>
+    <button class="btn-test" onclick="loadData(2)">Bonus 1</button>
+    <button class="btn-test" onclick="loadData(3)">Bonus 2</button>
+    <hr>
+
+    <div class="team-box">
+        <h3> Dolphins</h3>
+        Điểm 3 lượt:
+        <input type="number" id="d1">
+        <input type="number" id="d2">
+        <input type="number" id="d3">
+    </div>
+
+    <div class="team-box">
+        <h3> Koalas</h3>
+        Điểm 3 lượt:
+        <input type="number" id="k1">
+        <input type="number" id="k2">
+        <input type="number" id="k3">
+    </div>
+
+    <button class="btn-calc" onclick="checkWinner()">Tìm đội vô địch</button>
+
+    <div id="result">
+        Kết quả sẽ hiện ở đây...
+    </div>
+
+    <script>
+        
+        function loadData(type) {
+            if (type === 1) { 
+                setInputs(96, 108, 89, 88, 91, 110);
+            } else if (type === 2) { 
+                setInputs(97, 112, 101, 109, 95, 123);
+            } else { 
+                setInputs(97, 112, 101, 109, 95, 106);
+            }
+            
+            checkWinner();
+        }
+
+        function setInputs(d1, d2, d3, k1, k2, k3) {
+            document.getElementById('d1').value = d1;
+            document.getElementById('d2').value = d2;
+            document.getElementById('d3').value = d3;
+            document.getElementById('k1').value = k1;
+            document.getElementById('k2').value = k2;
+            document.getElementById('k3').value = k3;
+        }
+
+       
+        function checkWinner() {
+            
+            const scoreD1 = Number(document.getElementById('d1').value);
+            const scoreD2 = Number(document.getElementById('d2').value);
+            const scoreD3 = Number(document.getElementById('d3').value);
+
+            const scoreK1 = Number(document.getElementById('k1').value);
+            const scoreK2 = Number(document.getElementById('k2').value);
+            const scoreK3 = Number(document.getElementById('k3').value);
+
+        
+            const scoreDolphins = (scoreD1 + scoreD2 + scoreD3) / 3;
+            const scoreKoalas = (scoreK1 + scoreK2 + scoreK3) / 3;
+
+            
+            console.log(`Dolphins Avg: ${scoreDolphins}`);
+            console.log(`Koalas Avg: ${scoreKoalas}`);
+
+            
+            const minScore = 100;
+            let message = "";
+            let detail = `(Dolphins: ${scoreDolphins.toFixed(1)} - Koalas: ${scoreKoalas.toFixed(1)})`;
+
+            
+            if (scoreDolphins > scoreKoalas && scoreDolphins >= minScore) {
+                
+                message = ` Dolphins chiến thắng! ${detail}`;
+            } else if (scoreKoalas > scoreDolphins && scoreKoalas >= minScore) {
+                
+                message = ` Koalas chiến thắng! ${detail}`;
+            } else if (scoreDolphins === scoreKoalas && scoreDolphins >= minScore && scoreKoalas >= minScore) {
+                
+                message = ` Hai đội hòa nhau và cùng nhận cúp! ${detail}`;
+            } else {
+                
+                message = ` Không đội nào giành cúp (Không đủ điều kiện điểm tối thiểu 100). ${detail}`;
+            }
+
+            
+            document.getElementById('result').innerText = message;
+            
+            console.log(message);
+        }
+    </script>
+</body>
+</html>
