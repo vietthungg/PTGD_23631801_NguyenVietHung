@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Tip Calculator</title>
+</head>
+<body>
+
+    <h3>Nhập giá trị hóa đơn:</h3>
+    <input type="number" id="billInput" placeholder="Ví dụ: 275">
+    <button onclick="calculateTip()">Tính tiền Tip</button>
+
+    <hr>
+
+    <h3 id="resultText" style="color: blue;"></h3>
+
+    <script>
+        function calculateTip() {
+            const bill = Number(document.getElementById('billInput').value);
+
+            if (!bill) {
+                alert("Vui lòng nhập số tiền!");
+                return;
+            }
+            const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+            const total = bill + tip;
+
+            const finalString = `giá bill là ${bill}, tiền tip là ${tip},  ${total}`;
+
+            document.getElementById('resultText').innerText = finalString;
+
+            console.log(finalString);
+        }
+    </script>
+
+</body>
+</html>
