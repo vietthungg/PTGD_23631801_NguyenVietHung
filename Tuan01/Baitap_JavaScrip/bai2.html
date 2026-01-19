@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Mark</label>
+    <br>
+    Cân nặng <input type="number" id="massMark">
+    Chiều cao <input type="number" id="heightMark"> 
+    <br>
+    <label for="">John</label>
+    <br>
+    Cân nặng <input type="number" id="massJohn">
+    Chiều cao <input type="number" id="heightJohn">
+    <br>
+    
+    <button onclick="calculateBMI()">Tính toán và So sánh</button>
+    
+    <div id="output" style="margin-top: 10px; color: red; font-weight: bold;"></div>
+
+    <script>
+        function calculateBMI() {
+            // 1. Lấy dữ liệu
+            let massMark = Number(document.getElementById('massMark').value);
+            // Code JS của bạn dùng 'heightMark', nên HTML phải sửa id lại cho giống
+            let heightMark = Number(document.getElementById('heightMark').value);
+            
+            let massJohn = Number(document.getElementById('massJohn').value);
+            let heightJohn = Number(document.getElementById('heightJohn').value);
+
+            // Kiểm tra xem người dùng có nhập đủ không (tránh lỗi chia cho 0)
+            if (!massMark || !heightMark || !massJohn || !heightJohn) {
+                alert("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
+
+            // 2. Tính toán
+            let BMIMark = massMark / (heightMark ** 2);
+            let BMIJohn = massJohn / (heightJohn * heightJohn);
+
+            // 3. Xử lý Logic If/Else và Template String
+            let message = "";
+
+            if (BMIMark > BMIJohn) {
+                message = `Mark's BMI (${BMIMark.toFixed(1)}) cao hơn John's (${BMIJohn.toFixed(1)})!`;
+            } else {
+                message = `John's BMI (${BMIJohn.toFixed(1)}) is cao hơn Mark's (${BMIMark.toFixed(1)})!`;
+            }
+
+            // 4. In ra màn hình và Console
+            document.getElementById('output').innerText = message;
+            console.log(message);
+        }
+    </script>
+    
+</body>
+</html>
