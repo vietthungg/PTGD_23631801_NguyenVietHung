@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">đội Dolphins</label>
+    <input type="text" id="Dol1">
+    <input type="text" id="Dol2">
+    <input type="text" id="Dol3">
+    <br>
+    <label for="">Đội Koalas</label>
+    <input type="text" id="Koa1">
+    <input type="text" id="Koa2">
+    <input type="text" id="Koa3">
+
+    <button onclick="checkWinner()">Tìm đội tháng</button>
+
+    <script>
+        function calcAverage(a,b,c){
+            return (a + b + c) / 3;
+        }
+        function checkWinner(){
+            var d1 = parseInt(document.getElementById('Dol1').value);
+            var d2 = parseInt(document.getElementById('Dol2').value);
+            var d3 = parseInt(document.getElementById('Dol3').value);
+            var k1 = parseInt(document.getElementById('Koa1').value);
+            var k2 = parseInt(document.getElementById('Koa2').value);   
+            var k3 = parseInt(document.getElementById('Koa3').value);
+            var avgDolphins = calcAverage(d1,d2,d3);
+            var avgKoalas = calcAverage(k1,k2,k3);
+            if(avgDolphins >= 2 * avgKoalas){
+                console.log(`Đội Dolphins thắng (${avgDolphins} vs ${avgKoalas})`);
+            } else if (avgKoalas >= 2 * avgDolphins){
+                console.log(`Đội Koalas thắng (${avgKoalas} vs ${avgDolphins})`);
+            } else {
+                console.log('Không có đội nào thắng');
+            }
+        }
+    </script>
+</body>
+</html>
