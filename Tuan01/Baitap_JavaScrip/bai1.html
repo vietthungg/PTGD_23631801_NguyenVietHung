@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>So sánh BMI (Input)</title>
+</head>
+<body>
+
+    <h3>Thông tin của Mark</h3>
+    <div>
+        <label>Cân nặng (kg): </label>
+        <input type="number" id="massMark" placeholder="Ví dụ: 78">
+    </div>
+    <div>
+        <label>Chiều cao (m): </label>
+        <input type="number" id="heightMark" placeholder="Ví dụ: 1.69">
+    </div>
+
+    <h3>Thông tin của John</h3>
+    <div>
+        <label>Cân nặng (kg): </label>
+        <input type="number" id="massJohn" placeholder="Ví dụ: 92">
+    </div>
+    <div>
+        <label>Chiều cao (m): </label>
+        <input type="number" id="heightJohn" placeholder="Ví dụ: 1.95">
+    </div>
+
+    <br>
+    <button onclick="solveBMI()">Tính toán và So sánh</button>
+
+    <hr>
+
+    <div id="ketqua">
+        (Kết quả sẽ hiện ở đây)
+    </div>
+
+    <script>
+        function solveBMI() {
+            // 1. Lấy giá trị từ các ô input và chuyển thành số thực (parseFloat)
+            let massMark = parseFloat(document.getElementById('massMark').value);
+            let heightMark = parseFloat(document.getElementById('heightMark').value);
+            
+            let massJohn = parseFloat(document.getElementById('massJohn').value);
+            let heightJohn = parseFloat(document.getElementById('heightJohn').value);
+
+            // Kiểm tra nếu người dùng chưa nhập gì
+            if (!massMark || !heightMark || !massJohn || !heightJohn) {
+                alert("Vui lòng nhập đầy đủ cân nặng và chiều cao!");
+                return;
+            }
+
+            // 2. Tính BMI theo công thức
+            // Mark (dùng **)
+            let BMIMark = massMark / (heightMark ** 2);
+            // John (dùng *)
+            let BMIJohn = massJohn / (heightJohn * heightJohn);
+
+            // 3. Tạo biến Boolean so sánh
+            let markHigherBMI = BMIMark > BMIJohn;
+
+            // Hiển thị kết quả ra màn hình
+            document.getElementById('ketqua').innerHTML = `
+                <p>BMI của Mark: <b>${BMIMark}</b></p>
+                <p>BMI của John: <b>${BMIJohn}</b></p>
+            `;
+            
+            // Log console kiểm tra
+            console.log("Biến Boolean markHigherBMI:", markHigherBMI);
+        }
+    </script>
+</body>
+</html>
