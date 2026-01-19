@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Football Betting App Solution</title>
+</head>
+<body style="font-family: sans-serif; padding: 20px;">
+    <h1>Ứng dụng cá cược bóng đá</h1>
+
+    <script>
+        const game = {
+            team1: 'Bayern Munich',
+            team2: 'Borrussia Dortmund',
+            players: [
+                [
+                    'Neuer', 'Pavard', 'Martinez', 'Alaba', 'Davies',
+                    'Kimmich', 'Goretzka', 'Coman', 'Muller', 'Gnabry', 'Lewandowski',
+                ],
+                [
+                    'Burki', 'Schulz', 'Hummels', 'Akanji', 'Hakimi',
+                    'Weigl', 'Witsel', 'Hazard', 'Brandt', 'Sancho', 'Gotze',
+                ],
+            ],
+            score: '4:0',
+            scored: ['Lewandowski', 'Gnabry', 'Lewandowski', 'Hummels'],
+            date: 'Nov 9th, 2037',
+            odds: {
+                team1: 1.33,
+                x: 3.25,
+                team2: 6.5,
+            },
+        };
+
+
+        console.log("--- TASK 1: Tách cầu thủ 2 đội ---");
+        
+        const [players1, players2] = game.players;
+        console.log("Đội 1:", players1);
+        console.log("Đội 2:", players2);
+
+
+        console.log("\n--- TASK 2: Thủ môn và Cầu thủ còn lại (Team 1) ---");
+        
+        const [gk, ...fieldPlayers] = players1;
+        console.log(`Thủ môn: ${gk}`);
+        console.log(`Cầu thủ trên sân:`, fieldPlayers);
+
+
+        console.log("\n--- TASK 3: Danh sách tất cả cầu thủ (22 người) ---");
+       
+        const allPlayers = [...players1, ...players2];
+        console.log(allPlayers);
+
+
+        console.log("\n--- TASK 4: Đội hình 1 sau khi thay người ---");
+        
+        const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+        console.log(players1Final);
+
+
+        console.log("\n--- TASK 5: Tách tỉ lệ cược (Odds) ---");
+        
+        const {
+            odds: { team1, x: draw, team2 }
+        } = game;
+        console.log(`Tỉ lệ - Team 1: ${team1}, Hòa: ${draw}, Team 2: ${team2}`);
+
+
+        console.log("\n--- TASK 6: Hàm in bàn thắng ---");
+      
+        const printGoals = function (...players) {
+            console.log(`${players.length} bàn thắng được ghi bởi:`);
+            console.log(...players); 
+        };
+
+        // printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+        printGoals(...game.scored);
+
+
+        console.log("\n--- TASK 7: Dự đoán đội thắng ---");
+        team1 < team2 && console.log('Team 1 có khả năng thắng cao hơn');
+        
+        team1 > team2 && console.log('Team 2 có khả năng thắng cao hơn');
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Underscore to CamelCase Converter</title>
+  </head>
+  <body>
+    <script>
+      document.body.append(document.createElement('h3'));
+      document.querySelector('h3').innerText = 'Dán danh sách biến vào dưới đây:';
+      
+      const textarea = document.createElement('textarea');
+      document.body.append(textarea);
+      
+      const button = document.createElement('button');
+      button.innerText = 'Convert to CamelCase';
+      document.body.append(button);
+
+      button.addEventListener('click', function () {
+        const text = textarea.value;
+        
+        const rows = text.split('\n');
+        for (const [i, row] of rows.entries()) {
+          if (!row.trim()) continue;
+
+          const [first, second] = row.toLowerCase().trim().split('_');
+
+          const output = `${first}${second.replace(
+            second[0],
+            second[0].toUpperCase()
+          )}`;
+          const checkmarks = '✅'.repeat(i + 1);
+          console.log(`${output.padEnd(20)}${checkmarks}`);
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess My Number - Simple</title>
+</head>
+<body style="padding: 20px; font-family: sans-serif;">
+
+    <h1>Trò chơi đoán số (1 - 20)</h1>
+    
+    <button class="again">🔄 Chơi lại (Again)</button>
+    <br><br>
+
+    <div style="font-size: 24px;">
+        Số bí mật: <strong class="number">?</strong>
+    </div>
+    <br>
+
+    <input type="number" class="guess" placeholder="Nhập số..." style="padding: 5px;">
+    <button class="check" style="padding: 5px;">Kiểm tra!</button>
+    <br><br>
+
+    <h3 class="message">Bắt đầu đoán đi...</h3>
+    <p>💯 Điểm số: <span class="score">20</span></p>
+    <p>🥇 Điểm cao nhất: <span class="highscore">0</span></p>
+
+
+    <script>
+        let secretNumber = Math.trunc(Math.random() * 20) + 1;
+        let score = 20;
+        let highscore = 0;
+
+        const displayMessage = function (message) {
+            document.querySelector('.message').textContent = message;
+        };
+
+        document.querySelector('.check').addEventListener('click', function () {
+            const guess = Number(document.querySelector('.guess').value);
+
+            if (!guess) {
+                displayMessage('⛔️ Chưa nhập số!');
+
+            } else if (guess === secretNumber) {
+                displayMessage('🎉 Chính xác! Bạn thắng rồi!');
+                document.querySelector('.number').textContent = secretNumber;
+
+                document.querySelector('body').style.backgroundColor = '#60b347';
+                document.querySelector('body').style.color = 'white';
+
+                if (score > highscore) {
+                    highscore = score;
+                    document.querySelector('.highscore').textContent = highscore;
+                }
+
+            
+            } else if (guess !== secretNumber) {
+                if (score > 1) {
+                    displayMessage(guess > secretNumber ? '📈 Cao quá!' : '📉 Thấp quá!');
+                    score--;
+                    document.querySelector('.score').textContent = score;
+                } else {
+                    displayMessage('💥 Bạn thua mất rồi!');
+                    document.querySelector('.score').textContent = 0;
+                    document.querySelector('body').style.backgroundColor = 'red'; 
+                    document.querySelector('body').style.color = 'white';
+                }
+            }
+        });
+
+        document.querySelector('.again').addEventListener('click', function () {
+            
+            score = 20;
+            secretNumber = Math.trunc(Math.random() * 20) + 1;
+            displayMessage('Bắt đầu đoán đi...');
+            document.querySelector('.score').textContent = score;
+            document.querySelector('.number').textContent = '?';
+            document.querySelector('.guess').value = '';
+
+            document.querySelector('body').style.backgroundColor = 'white';
+            document.querySelector('body').style.color = 'black';
+        });
+    </script>
+</body>
+</html>
