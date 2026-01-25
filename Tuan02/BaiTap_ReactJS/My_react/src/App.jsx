@@ -1,11 +1,13 @@
 
 import React from 'react';
-import ProductCard from './components/Bai1/ProductCard';
-import Button from './components/Bai2/button';
+// import ProductCard from './components/Bai1/ProductCard';
+// import Button from './components/Bai2/button';
+import Alert from './components/bai3/Alert';
 function App() {
   return (
     // bài 1
-    <ProductCard /> 
+    // <ProductCard /> 
+
     
 
     // bài 2
@@ -15,6 +17,12 @@ function App() {
     //   <Button type="danger">Xóa tài khoản</Button>
 
     // </div>
+
+    // bài 3
+    <div className="App">
+       {}
+      <Alert/>
+    </div>
       
 
   );
