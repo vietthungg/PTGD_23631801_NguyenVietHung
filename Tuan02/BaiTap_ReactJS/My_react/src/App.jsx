@@ -4,6 +4,7 @@ import React from 'react';
 // import Button from './components/Bai2/button';
 import Alert from './components/bai3/Alert';
 import LoginForm from './components/Bai4/LoginForm';
+import ProductList from './components/Bai5/ProductList';
 function App() {
   return (
     // bài 1
@@ -30,6 +31,11 @@ function App() {
       <label htmlFor="">Bai tập 4</label>
        <LoginForm />
     </div>
+    <hr />
+    <div className="App">
+      <label htmlFor="">Bai tập 5</label>
+         <ProductList />
+      </div>
     </>
 
   );
