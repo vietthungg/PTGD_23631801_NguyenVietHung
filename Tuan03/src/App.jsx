@@ -3,6 +3,7 @@ import './App.css'
 import Bai1 from './components/Bai1/bai1';
 import Counter from './components/bai2/Counter';
 import InputForm from './components/bai3/InputForm';
+import Bai4 from './components/bai4/Bai4';
 function App() {
   return (
     <>
@@ -24,7 +25,11 @@ function App() {
       <hr />
     </div>
       
-      
+    <div>
+      <p>Đây là bài 4</p>
+      <Bai4/>
+      <hr />
+    </div>
     </>
   );
 }
