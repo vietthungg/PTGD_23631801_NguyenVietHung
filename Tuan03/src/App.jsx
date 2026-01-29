@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css'
 import Bai1 from './components/Bai1/bai1';
 import Counter from './components/bai2/Counter';
+import InputForm from './components/bai3/InputForm';
 function App() {
   return (
     <>
@@ -16,6 +17,12 @@ function App() {
       <Counter />
       <hr />
     </div> 
+
+    <div>
+      <p>Đây là bài 3</p>
+      <InputForm />
+      <hr />
+    </div>
       
       
     </>
